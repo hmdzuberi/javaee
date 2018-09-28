@@ -5,8 +5,25 @@
 <title>Web Application</title>
 </head>
 <body>
-
-	<a href="first">My First Example</a>
-
+	<ul>
+		<li><a href="movie">Show Movies</a></li>
+	</ul>
+	<form action="login" method="post">
+		<table>
+			<tr>
+				<td><label for="username">Username: </label></td>
+				<td><input type="text" name="username"
+					placeholder="Enter your username" id="username" /></td>
+			</tr>
+			<tr>
+				<td><label for="password">Password: </label></td>
+				<td><input type="password" name="password"
+					placeholder="Enter the password" id="password" /></td>
+			</tr>
+			<tr style="text-align: center">
+				<td colspan=2><input type="submit" value="login" /></td>
+			</tr>
+		</table>
+	</form>
 </body>
 </html>
