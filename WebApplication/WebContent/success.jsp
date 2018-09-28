@@ -8,5 +8,6 @@
 </head>
 <body>
 <h1 style="color: green">success</h1>
+<h3><% out.print(request.getAttribute("rowAdded")); %> rows added</h3>
 </body>
 </html>
