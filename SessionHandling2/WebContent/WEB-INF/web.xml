@@ -8,5 +8,16 @@
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
+    <welcome-file>selectbook.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>ShoppingCart</display-name>
+    <servlet-name>ShoppingCart</servlet-name>
+    <servlet-class>com.training.ShoppingCart</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShoppingCart</servlet-name>
+    <url-pattern>/cart</url-pattern>
+  </servlet-mapping>
 </web-app>
