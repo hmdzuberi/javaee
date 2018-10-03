@@ -27,6 +27,7 @@ public class SessionServlet extends HttpServlet {
 
 		out.println("New Session: " + session.isNew());
 		out.println("Session ID: " + session.getId());
+		out.println("Attribute: " + session.getAttribute("fourthAttribute"));
 	}
 
 	@Override

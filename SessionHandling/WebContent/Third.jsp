@@ -15,6 +15,12 @@
 			out.println(session.getId());
 		%>
 	</p>
+	<p style="color: gold">
+		<%
+			out.println(session.getAttribute("firstAttribute"));
+			out.println(session.getAttribute("secondAttribute"));
+		%>
+	</p>
 	<%
 		session.invalidate();
 	%>

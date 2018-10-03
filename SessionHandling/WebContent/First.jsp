@@ -9,6 +9,7 @@
 <body>
 	<span style="color: red">New Session <%
 		out.println(session.isNew());
+		session.setAttribute("firstAttribute", "I visited First.jsp");
 	%></span>
 	<p>
 		<%
