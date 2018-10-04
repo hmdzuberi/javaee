@@ -15,6 +15,6 @@
 	<c:set var="result" value="${customerBean.toString()}"></c:set>
 	<c:out value="${result}"></c:out>
 	-->
-	<jsp:forward page="customerServlet"></jsp:forward>
+	<jsp:forward page="addCustomer"></jsp:forward>
 </body>
 </html>

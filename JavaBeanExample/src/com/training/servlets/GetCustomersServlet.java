@@ -4,24 +4,24 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.training.beans.Customer;
 import com.training.dao.CustomerDAO;
 import com.training.dao.impl.CustomerDAOImpl;
 import com.training.utils.DbConnection;
 
-public class CustomerServlet extends HttpServlet {
+public class GetCustomersServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	public CustomerServlet() {
+	public GetCustomersServlet() {
 		super();
 	}
 
@@ -32,23 +32,24 @@ public class CustomerServlet extends HttpServlet {
 		InputStream stream = classLoader.getResourceAsStream("jdbc.properties");
 		Connection con = DbConnection.getOracleConnection(stream);
 
-		HttpSession session = request.getSession();
-		Customer customer = (Customer) session.getAttribute("customerBean");
-
-		System.out.println(customer);
-
-		int customerAdded = 0;
 		CustomerDAO customerDAO = new CustomerDAOImpl(con);
+		List<Customer> customerList = null;
 
 		try {
-			customerAdded = customerDAO.addCustomer(customer);
+			customerList = customerDAO.getCustomers();
+			System.out.println(customerList);
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
-		request.setAttribute("customerAdded", customerAdded + " customer added");
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher("AddCustomer.jsp");
+		request.setAttribute("customerList", customerList);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("ShowCustomers.jsp");
 		dispatcher.forward(request, response);
 
 	}

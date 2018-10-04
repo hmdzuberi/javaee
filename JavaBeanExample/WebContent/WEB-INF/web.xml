@@ -13,10 +13,20 @@
     <description></description>
     <display-name>CustomerServlet</display-name>
     <servlet-name>CustomerServlet</servlet-name>
-    <servlet-class>com.training.servlets.CustomerServlet</servlet-class>
+    <servlet-class>com.training.servlets.AddCustomerServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>CustomerServlet</servlet-name>
-    <url-pattern>/customerServlet</url-pattern>
+    <url-pattern>/addCustomer</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetCustomersServlet</display-name>
+    <servlet-name>GetCustomersServlet</servlet-name>
+    <servlet-class>com.training.servlets.GetCustomersServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetCustomersServlet</servlet-name>
+    <url-pattern>/getCustomers</url-pattern>
   </servlet-mapping>
 </web-app>
