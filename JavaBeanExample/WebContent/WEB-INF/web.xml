@@ -11,12 +11,12 @@
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>CustomerServlet</display-name>
-    <servlet-name>CustomerServlet</servlet-name>
+    <display-name>AddCustomerServlet</display-name>
+    <servlet-name>AddCustomerServlet</servlet-name>
     <servlet-class>com.training.servlets.AddCustomerServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>CustomerServlet</servlet-name>
+    <servlet-name>AddCustomerServlet</servlet-name>
     <url-pattern>/addCustomer</url-pattern>
   </servlet-mapping>
   <servlet>
@@ -28,5 +28,15 @@
   <servlet-mapping>
     <servlet-name>GetCustomersServlet</servlet-name>
     <url-pattern>/getCustomers</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LoginServlet</display-name>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.training.servlets.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/login</url-pattern>
   </servlet-mapping>
 </web-app>

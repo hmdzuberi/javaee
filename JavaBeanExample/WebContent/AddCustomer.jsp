@@ -12,8 +12,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<c:set value="${requestScope.customerAdded}" var="result"></c:set>
-<span style="color: green"><c:out value="${result}"></c:out></span>
+<%@ include file="Header.html" %>
+	<h3>Add Customer</h3>
 	<div class="col-md-3">
 		<form action="ProcessCustomer.jsp" method="post" class="form-group">
 			<div>
@@ -21,20 +21,26 @@
 					name="customerId" required="required" id="customerId"
 					class="form-control" />
 			</div>
+			<br>
 			<div>
 				<label for="customerName">Customer Name: </label><input type="text"
 					name="customerName" required="required" id="customerName"
 					class="form-control" />
 			</div>
+			<br>
 			<div>
 				<label for="mobileNumber">Mobile Number:</label><input type="text"
 					name="mobileNumber" required="required" id="mobileNumber"
 					class="form-control" />
 			</div>
+			<br>
 			<div>
 				<input type="submit" value="Add" class="btn btn-default" />
 			</div>
 		</form>
+		<br>
+		<c:set value="${requestScope.customerAdded}" var="result"></c:set>
+		<span style="color: green"><c:out value="${result}"></c:out></span>
 	</div>
 </body>
 </html>

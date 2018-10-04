@@ -12,7 +12,7 @@
 <title>Customers</title>
 </head>
 <body>
-	<h2>Customer List</h2>
+	<h3>Customer List</h3>
 	<div class="col-md-6">
 		<table class="table table-bordered table-hover">
 			<tr>
