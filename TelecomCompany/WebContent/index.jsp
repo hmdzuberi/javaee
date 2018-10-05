@@ -9,7 +9,7 @@
 .plansContainer {
 	position: relative;
 	left: 10px;
-	top: 60px;
+	top: 55px;
 }
 
 .bold {
