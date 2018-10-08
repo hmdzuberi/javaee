@@ -20,7 +20,21 @@ h2 {
 	margin-left: 10px;
 }
 </style>
+<script>
+	function planSelectHandler() {
+		var plan = document.getElementById("plan").value;
+		var planCost = document.getElementById("planCose");
 
+		if (plan == "Tera")
+			planCost.value = "499";
+		else if (plan == "Giga")
+			planCost.value = "399";
+		else if (plan == "Mega")
+			planCost.value = "299";
+		else if (plan == "Kilo")
+			planCose.value = "199";
+	}
+</script>
 <title>Plans</title>
 </head>
 <%!String mobileNumber = "";%>
@@ -29,21 +43,23 @@ h2 {
 <%
 	Cookie[] cookies = request.getCookies();
 
-	for (Cookie cookie : cookies) {
-		if (cookie.getName().equals("plan"))
-			plan = cookie.getValue();
-		if (cookie.getName().equals("mobileNumber"))
-			mobileNumber = cookie.getValue();
+	if (cookies != null) {
+		for (Cookie cookie : cookies) {
+			if (cookie.getName().equals("plan"))
+				plan = cookie.getValue();
+			if (cookie.getName().equals("mobileNumber"))
+				mobileNumber = cookie.getValue();
+		}
 	}
 
 	if (plan.equals("Tera"))
-		cost = "Rs. 499";
+		cost = "499";
 	else if (plan.equals("Giga"))
-		cost = "Rs. 399";
+		cost = "399";
 	else if (plan.equals("Mega"))
-		cost = "Rs. 299";
+		cost = "299";
 	else if (plan.equals("Kilo"))
-		cost = "Rs. 199";
+		cost = "199";
 %>
 <body>
 	<div class="mainContainer">
@@ -60,10 +76,10 @@ h2 {
 					</tr>
 					<tr>
 						<td class="bold">Price</td>
-						<td>499</td>
-						<td>399</td>
-						<td>299</td>
-						<td>199</td>
+						<td>Rs. 499</td>
+						<td>Rs. 399</td>
+						<td>Rs. 299</td>
+						<td>Rs. 199</td>
 					</tr>
 					<tr>
 						<td class="bold">Benefits</td>
@@ -90,8 +106,8 @@ h2 {
 					</div>
 					<br>
 					<div>
-						<label for="plan">Plan: </label> <select name="plan"
-							class="form-control">
+						<label for="plan">Plan: </label> <select name="plan" id="plan"
+							class="form-control" onchange="planSelectHandler()">
 							<option
 								<%if (plan.equals("Tera"))
 				out.println("selected");%>>Tera</option>
@@ -109,7 +125,8 @@ h2 {
 					<br>
 					<div>
 						<label for="planCost">Cost: </label> <input type="text"
-							name="planCost" class="form-control" value="" />
+							name="planCost" id="planCost" class="form-control"
+							value="<%=cost%>" />
 					</div>
 					<br>
 					<div>
