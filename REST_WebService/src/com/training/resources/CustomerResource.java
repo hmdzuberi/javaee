@@ -2,12 +2,16 @@ package com.training.resources;
 
 import java.util.HashMap;
 
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -41,10 +45,7 @@ public class CustomerResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getCustomerAsJson() {
 
-		HashMap<Integer, Customer> customerList = new HashMap<>();
-
-		customerList.put(101, new Customer(101, "Ramesh", 484848L));
-		customerList.put(102, new Customer(102, "Ganesh", 565656L));
+		HashMap<Long, Customer> customerList = CustomerDetails.getAllCustomer();
 
 		return Response.status(200).entity(customerList).build();
 	}
@@ -65,6 +66,21 @@ public class CustomerResource {
 			@FormParam("mobileNumber") long mobileNumber) {
 
 		return CustomerDetails.addCustomer(new Customer(customerId, customerName, mobileNumber));
+	}
+
+	@DELETE
+	@Path("remove")
+	public String removeCustomer(@QueryParam("customerId") long customerId) {
+
+		return CustomerDetails.removeCustomer(customerId);
+	}
+
+	@PUT
+	@Path("update")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String updateMobileNumber(Customer customer, @QueryParam("customerId") long customerId) {
+
+		return CustomerDetails.updateMobileNumber(customerId, customer);
 	}
 
 }

@@ -26,6 +26,13 @@ public class CustomerDetails {
 		return customerList;
 	}
 
+	public static String removeCustomer(long key) {
+
+		Customer customer = customerList.remove(key);
+
+		return customer.getCustomerName();
+	}
+
 	public static String addCustomer(Customer customer) {
 
 		String message = "Added";
@@ -35,6 +42,13 @@ public class CustomerDetails {
 			message = "Replaced";
 
 		return message;
+	}
+
+	public static String updateMobileNumber(long key, Customer customer) {
+
+		customerList.put(key, customer);
+
+		return customer.getCustomerName() + "'s mobile number changed to " + customer.getMobileNumber();
 	}
 
 }
