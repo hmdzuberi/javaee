@@ -12,7 +12,7 @@ public class QuickStart {
 	@Produces(MediaType.TEXT_PLAIN)
 	public String getMessage() {
 
-		return "You have configured JERSEY properly";
+		return "You have configured JERSEY properly - Hamaad";
 	}
 
 }
