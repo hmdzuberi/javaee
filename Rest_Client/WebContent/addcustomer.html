@@ -21,13 +21,13 @@
 			};
 
 			$.ajax({
-				url : "http://localhost:8080/REST_WebService/rest/customer/addAsJson",
+				url : "http://10.140.2.241:8080/Rest_WebService/rest/customer/addAsJson",
 				type : "POST",
 				data : JSON.stringify(obj),
 				dataType : "html",
 				contentType : "application/json;charset=utf-8",
 				success : function(data) {
-					console.log(data);
+					$("#message").text(data);
 				},
 				failure : function(data) {
 					console.log(data);
@@ -64,6 +64,8 @@
 					class="btn btn-default" />
 			</div>
 		</form>
+		<br>
+		<p style="color: green" id="message"></p>
 	</div>
 </body>
 </html>
