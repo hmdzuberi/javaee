@@ -83,4 +83,12 @@ public class CustomerResource {
 		return CustomerDetails.updateMobileNumber(customerId, customer);
 	}
 
+	@POST
+	@Path("addAsJson")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String addCustomer(Customer customer) {
+
+		return CustomerDetails.addCustomer(customer);
+	}
+
 }
