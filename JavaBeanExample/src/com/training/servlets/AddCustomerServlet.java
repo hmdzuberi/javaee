@@ -12,8 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import org.apache.tomcat.jdbc.pool.DataSource;
+import javax.sql.DataSource;
 
 import com.training.beans.Customer;
 import com.training.dao.CustomerDAO;
@@ -69,7 +68,7 @@ public class AddCustomerServlet extends HttpServlet {
 
 		try {
 			Context ctx = new InitialContext();
-			DataSource dataSource = (DataSource) ctx.lookup("java:/comp/env/jdbc.ds1");
+			DataSource dataSource = (DataSource) ctx.lookup("java:/comp/env/jdbc/ds1");
 			con = dataSource.getConnection();
 		} catch (Exception e) {
 			e.printStackTrace();
