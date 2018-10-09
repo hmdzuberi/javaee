@@ -115,6 +115,9 @@ public class DonorResource {
 
 		List<Donor> donorList = null;
 
+		System.out.println(location);
+		System.out.println(bloodType);
+
 		try {
 			donorList = donorDAO.getByLocAndType(location, bloodType);
 		} catch (Exception e) {

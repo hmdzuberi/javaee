@@ -2,16 +2,66 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+<script type="text/javascript">
+	$(function() {
+		getLocations();
+		
+		$("#location").on('change', getLocations);		
+	});
+	
+	function getLocations() {
+		var url = "http://localhost:8080/BloodDonor/rest/donor/loc";
+		
+		$.get(url, function(response) {
+			var data = JSON.parse(response);
+			
+			for(location in data) {
+				$("#location").append("<option value='"+ location +"'>"+ location +"</option>");
+			}
+		});
+		
+		var location = $("#location").val;
+		
+		$("#bloodType").on('change', getBloodTypes(location));
+	}
+	
+	function getBloodTypes(var location) {
+		var url = "http://localhost:8080/BloodDonor/rest/donor/loc/type?location=" + location;
+		
+		$.get(url, function(response) {
+			var data = JSON.parse(response);
+			
+			for(bloodType in data) {
+				$("#bloodType").append("<option value='"+ bloodType +"'>"+ bloodType +"</option>");
+			}
+		});
+		
+		var bloodType = $("#bloodType").val;
+		
+		$("#bloodType").on('change', getDonors(location, bloodType));
+	}
+	
+	function getDonors(var location, var bloodType) {
+		var url = ""
+	}
+	
+</script>
+<title>Donor</title>
 </head>
 <body>
 	<div>
-		<ul>
-			<li><a href="addDonor.html">Add a new Donor</a></li>
-			<li><a href="donorByLoc.html">Show Donors by Location</a></li>
-			<li><a href="donorByType.html">Show Donors by Blood Type</a></li>
-			<li><a href="updateDonor.html">Update existing Donor</a></li>
-		</ul>
+		<form>
+			<div>
+				<label for="location">Location:</label>
+				<select id="location" name="location"></select>
+			</div>
+			<br>
+			<div>
+				<label for="bloodType">Blood Type:</label>
+				<select id="bloodType" name="bloodType"></select>
+			</div>
+		</form>
 	</div>
 </body>
 </html>
