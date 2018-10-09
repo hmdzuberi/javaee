@@ -16,9 +16,9 @@ public class MyRestClient {
 		Client client = ClientBuilder.newClient();
 		WebTarget target = client.target("http://localhost:8080/REST_WebService/rest");
 
-		String response = target.path("quick").request().get(String.class);
-
-		System.out.println(response);
+		// String response = target.path("quick").request().get(String.class);
+		//
+		// System.out.println(response);
 
 		// Response deleteResponse =
 		// target.path("customer/remove").queryParam("customerId",
@@ -28,10 +28,18 @@ public class MyRestClient {
 
 		Customer customer = new Customer(101, "Hamaad", 123123L);
 
-		Response updateResponse = target.path("customer/update").queryParam("customerId", 101).request()
-				.put(Entity.entity(customer, MediaType.APPLICATION_JSON));
+		//
+		// Response updateResponse =
+		// target.path("customer/update").queryParam("customerId",
+		// 101).request()
+		// .put(Entity.entity(customer, MediaType.APPLICATION_JSON));
+		//
+		// System.out.println(updateResponse);
 
-		System.out.println(updateResponse);
+		Response response = target.path("customer/addAsJason").request()
+				.post(Entity.entity(customer, MediaType.APPLICATION_JSON));
+
+		System.out.println(response.readEntity(String.class));
 	}
 
 }
