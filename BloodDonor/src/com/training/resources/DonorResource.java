@@ -108,10 +108,9 @@ public class DonorResource {
 	}
 
 	@GET
-	@Path("get")
+	@Path("get/loctype/")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getDonorByLocAndType(@QueryParam("location") String location,
-			@QueryParam("bloodType") String bloodType) {
+	public Response getDonorByLocAndType(@QueryParam("loc") String location, @QueryParam("type") String bloodType) {
 
 		List<Donor> donorList = null;
 
@@ -144,9 +143,9 @@ public class DonorResource {
 	}
 
 	@GET
-	@Path("loc/type")
+	@Path("loctype")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getTypesByLoc(@QueryParam("location") String location) {
+	public Response getTypesByLoc(@QueryParam("loc") String location) {
 
 		List<String> typeList = null;
 

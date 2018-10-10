@@ -2,64 +2,64 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
 <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
 <script type="text/javascript">
 	$(function() {
-		getLocations();
-		
-		$("#location").on('change', getLocations);		
+		getLocations();	
+		$("#location").on('change', getBloodTypes());
+		$("#bloodType").on('change', getDonors());
 	});
 	
 	function getLocations() {
 		var url = "http://localhost:8080/BloodDonor/rest/donor/loc";
 		
 		$.get(url, function(response) {
-			var data = JSON.parse(response);
+			//var data = JSON.parse(response);
 			
-			for(location in data) {
-				$("#location").append("<option value='"+ location +"'>"+ location +"</option>");
+			for(loc in response) {
+				$("#location").append("<option value='"+ response[loc] +"'>"+ response[loc] +"</option>");
 			}
 		});
 		
-		var location = $("#location").val;
 		
-		$("#bloodType").on('change', getBloodTypes(location));
 	}
 	
-	function getBloodTypes(var location) {
-		var url = "http://localhost:8080/BloodDonor/rest/donor/loc/type?location=" + location;
+	function getBloodTypes() {
+		var url = "http://localhost:8080/BloodDonor/rest/donor/loctype?loc=" + $("#location").val();
 		
 		$.get(url, function(response) {
-			var data = JSON.parse(response);
+			//var data = JSON.parse(response);
 			
-			for(bloodType in data) {
-				$("#bloodType").append("<option value='"+ bloodType +"'>"+ bloodType +"</option>");
+			for(type in response) {
+				$("#bloodType").append("<option value='"+ response[type] +"'>"+ response[type] +"</option>");
 			}
 		});
 		
-		var bloodType = $("#bloodType").val;
 		
-		$("#bloodType").on('change', getDonors(location, bloodType));
 	}
 	
-	function getDonors(var location, var bloodType) {
-		var url = ""
+	function getDonors(location, bloodType) {
+		var url = "";
 	}
 	
 </script>
 <title>Donor</title>
 </head>
 <body>
-	<div>
-		<form>
+	<div class="col-md-4">
+		<form class="form-group">
 			<div>
-				<label for="location">Location:</label>
-				<select id="location" name="location"></select>
+				<label for="location">Location:</label> <select id="location"
+					name="location" class="form-control"></select>
 			</div>
 			<br>
 			<div>
-				<label for="bloodType">Blood Type:</label>
-				<select id="bloodType" name="bloodType"></select>
+				<label for="bloodType">Blood Type:</label> <select id="bloodType"
+					name="bloodType" class="form-control"></select>
 			</div>
 		</form>
 	</div>
