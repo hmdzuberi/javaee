@@ -9,43 +9,48 @@
 <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
 <script type="text/javascript">
 	$(function() {
-		getLocations();	
-		$("#location").on('change', getBloodTypes());
-		$("#bloodType").on('change', getDonors());
+		getLocations();
+		$("#location").on('change', getBloodTypes);
+		$("#bloodType").on('change', getDonors);
 	});
-	
+
 	function getLocations() {
 		var url = "http://localhost:8080/BloodDonor/rest/donor/loc";
-		
+
 		$.get(url, function(response) {
 			//var data = JSON.parse(response);
-			
-			for(loc in response) {
-				$("#location").append("<option value='"+ response[loc] +"'>"+ response[loc] +"</option>");
+			$("#location").empty();
+			for (loc in response) {
+				$("#location").append(
+						"<option value='"+ response[loc] +"'>" + response[loc]
+								+ "</option>");
 			}
+
+			getBloodTypes();
 		});
-		
-		
+
 	}
-	
+
 	function getBloodTypes() {
-		var url = "http://localhost:8080/BloodDonor/rest/donor/loctype?loc=" + $("#location").val();
-		
+		var url = "http://localhost:8080/BloodDonor/rest/donor/loctype?loc="
+				+ $("#location").val();
+
 		$.get(url, function(response) {
 			//var data = JSON.parse(response);
-			
-			for(type in response) {
-				$("#bloodType").append("<option value='"+ response[type] +"'>"+ response[type] +"</option>");
+			$("#bloodType").empty();
+			for (type in response) {
+				$("#bloodType").append(
+						"<option value='"+ response[type] +"'>"
+								+ response[type] + "</option>");
 			}
 		});
-		
-		
+
 	}
-	
-	function getDonors(location, bloodType) {
-		var url = "";
+
+	function getDonors() {
+		var url = "http://localhost:8080/BloodDonor/rest/donor/get/loctype/?loc="
+				+ $("#location").val() + "&type=" + $("#bloodType").val();
 	}
-	
 </script>
 <title>Donor</title>
 </head>
