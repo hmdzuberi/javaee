@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- <bean id="invBean" class="com.training.beans.Invoice" p:invoiceNo="101" 
+		p:customer-ref="ram" lazy-init="true"> <property name="productList"> <list> 
+		<ref bean="tv"></ref> <ref bean="laptop"></ref> <ref bean="mobile"></ref> 
+		</list> </property> </bean> <bean id="constructorBean" class="com.training.beans.Invoice" 
+		c:invoiceNo="102" c:customer-ref="shyam"></bean> <bean id="ram" class="com.training.beans.Customer" 
+		p:customerName="Ramesh" p:mobileNo="40555"></bean> <bean id="shyam" class="com.training.beans.Customer" 
+		p:customerName="Shyam" p:mobileNo="40556"></bean> <bean id="tv" class="com.training.beans.Product" 
+		p:productId="303" p:productName="Sony TV" p:quantity="1" p:ratePerUnit="45000"></bean> 
+		<bean id="laptop" class="com.training.beans.Product" p:productId="304" p:productName="Dell 
+		Inspiron" p:quantity="2" p:ratePerUnit="50000"></bean> <bean id="mobile" 
+		class="com.training.beans.Product" p:productId="305" p:productName="Apple 
+		iPhone" p:quantity="1" p:ratePerUnit="65000"></bean> -->
+
+	<!-- <bean id="vidyarthi" class="com.training.beans.Student" p:studentName="Magesh"></bean> 
+		<bean id="teacher" class="com.training.beans.Teacher" p:teacherName="Gupta" 
+		autowire="byType"></bean> -->
+
+	<!-- <context:annotation-config /> <context:component-scan base-package="com.training.beans" 
+		/> -->
+</beans>
