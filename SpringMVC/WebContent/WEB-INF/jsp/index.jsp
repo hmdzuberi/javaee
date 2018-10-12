@@ -9,5 +9,6 @@
 <body>
 	<h1>${heading}</h1>
 	<a href="names">Names</a>
+	<a href="addBook">Books</a>
 </body>
 </html>
